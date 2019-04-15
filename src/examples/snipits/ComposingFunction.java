@@ -1,5 +1,6 @@
 package examples.snipits;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
@@ -39,7 +40,7 @@ public class ComposingFunction {
         // All together make a new function.
         final UnaryOperator<List<Integer>> threeLowestUniqueNumbers = e -> uniqueNumbers.andThen(order.andThen(firstThree)).apply(e);
 
-        final List<Integer> numbers = List.of(6,3,8,4,7,2,8,2,2,1,7,9);
+        final List<Integer> numbers = Arrays.asList(6,3,8,4,7,2,8,2,2,1,7,9);
         System.out.println("Question three = " + threeLowestUniqueNumbers.apply(numbers));
     }
 }
