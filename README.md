@@ -30,6 +30,8 @@ With `higher-order functions` we can change this with ease, and make it look gor
 * [Apache Spark](https://spark.apache.org/)
 * [Apache Memorize](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/concurrent/Memoizer.html)
 * [Palatable/Lambda](https://github.com/palatable/lambda)
+* [Jcompilo](https://github.com/bodar/jcompilo)
+* [TotallyLazy](https://github.com/bodar/totallylazy)
 
 **Don't forget the other `JVM` Languages**
 * [Clojure (Lisp)](https://clojure.org/index)
