@@ -29,6 +29,7 @@ public class TailCallExample {
 
     // Warning!
     // Be aware of "tailcall optimization" which the JVM does -not- support.
+    // If you compile with https://github.com/bodar/jcompilo you do have "tailcall optimization" !!!
 
     // Has no state
     private int factorialTailCall(final int number){

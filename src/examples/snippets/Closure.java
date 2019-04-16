@@ -1,8 +1,5 @@
 package examples.snippets;
 
-import sun.java2d.xr.MutableInteger;
-
-import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
 

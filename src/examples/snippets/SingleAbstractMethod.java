@@ -8,8 +8,7 @@ package examples.snippets;
 //\____/|_|_| |_|\__, |_|\___| \_| |_/_.__/|___/\__|_|  \__,_|\___|\__| \_|  |_/\___|\__|_| |_|\___/ \__,_|
 //                __/ |
 //               |___/
-public class SingleMethodInterface {
-    // the listener example
+public class SingleAbstractMethod {
     // Also called SAM, Single Abstract Method
 
     public void run(){

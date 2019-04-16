@@ -12,24 +12,24 @@ import java.util.stream.Stream;
 //(_)___/\__|_|  \___|\__,_|_| |_| |_|
 public class StreamExample {
     List<String> names = Arrays.asList("Bob", "Jane", "Mary", "", null);
-    // Look at biteCode and see if this is faster than a for loop.
+
     public void run(){
-        // 1    Good old for loop
+        // 1 Good old for loop
         for (int i = 0; i < names.size(); i++){
             final String name = names.get(i);
 
             System.out.println(name);
         }
 
-        // 2    The better enhanced for loop
+        // 2 The better enhanced for loop
         for (String name : names){
             System.out.println(name);
         }
 
-        // 3    Foreach stream
+        // 3 Foreach stream
         names.forEach(name -> System.out.println(name));
 
-        // 4    Stream with a foreach
+        // 4 Stream with a foreach
         names.stream().forEach(name -> System.out.println(name));
 
         // Q: When do you want a stream separated form the 'terminal operation' (foreach part)
@@ -39,9 +39,9 @@ public class StreamExample {
         streamOfNames.forEach(name -> System.out.println(name));
 
 
-        //open a stream on a collection
-        // Map (Make changes to items)          // The order of Map and Filter does NOT mather.
-        // Filter (Make the collection smaller) // Lazy evaluation uses the most optimal form anyway.
+        // open a stream on a collection
+        // Map (Make changes to items)
+        // Filter (Make the collection smaller)
         // Terminal(Make a collection form the results)
     }
 }
