@@ -1,4 +1,4 @@
-package examples.functionalVsImperative;
+package examples.functionalVsImperative.data;
 
 import java.math.BigDecimal;
 import java.util.Arrays;

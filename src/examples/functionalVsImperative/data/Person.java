@@ -1,4 +1,4 @@
-package examples.functionalVsImperative;
+package examples.functionalVsImperative.data;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -86,8 +86,4 @@ public class Person {
             ", hoursPerWeek=" + hoursPerWeek +
             '}';
     }
-}
-
-enum Gender{
-    MALE, FEMALE, OTHER
 }
