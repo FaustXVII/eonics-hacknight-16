@@ -38,7 +38,7 @@ public class TheFunctionalWay {
     Predicate<Person> onlyWoman = person -> person.getGender().equals(Gender.FEMALE);
     Predicate<Person> onlyOther = person -> person.getGender().equals(Gender.OTHER);
     Predicate<Person> onlyKids = person -> person.getAge() < 18;
-    Predicate<Person> unemployed = person -> person.isUnemployed();
+    Predicate<Person> unemployed = Person::isUnemployed;
 
     Function<List<Person>, BigDecimal> averageAnnualSalary = averageAnnualSalary_WithFilter.apply(noFilter);
     Function<List<Person>, BigDecimal> averageAnnualSalaryMale = averageAnnualSalary_WithFilter.apply(onlyMan);
