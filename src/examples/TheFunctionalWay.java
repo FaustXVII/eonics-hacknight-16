@@ -1,8 +1,8 @@
-package examples.functionalVsImperative;
+package examples;
 
-import examples.functionalVsImperative.data.Gender;
-import examples.functionalVsImperative.data.Person;
-import examples.functionalVsImperative.data.RandomPersonGenerator;
+import functionalVsImperative.data.Gender;
+import functionalVsImperative.data.Person;
+import functionalVsImperative.data.RandomPersonGenerator;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

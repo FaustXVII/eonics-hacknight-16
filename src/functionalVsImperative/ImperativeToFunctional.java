@@ -1,7 +1,7 @@
-package examples.functionalVsImperative;
+package functionalVsImperative;
 
-import examples.functionalVsImperative.data.Person;
-import examples.functionalVsImperative.data.RandomPersonGenerator;
+import functionalVsImperative.data.Person;
+import functionalVsImperative.data.RandomPersonGenerator;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -21,8 +21,8 @@ public class ImperativeToFunctional {
       // Easy maintainable.
       // Simple to extend.
 
-      // Looking for inspiration? In the package `snippets` you can find some
-      // Stuck? Take a look at `TheFunctionalWay.java`
+      // Looking for inspiration? In the package `examples/snippets` you can find some
+      // Stuck? Take a look at `TheFunctionalWay.java` in the package `examples`
 
       // Done and looking for more?
       // Try to next the most common first and last names by gender.

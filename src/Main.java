@@ -1,4 +1,4 @@
-import examples.functionalVsImperative.ImperativeToFunctional;
+import functionalVsImperative.ImperativeToFunctional;
 
 public class Main {
 

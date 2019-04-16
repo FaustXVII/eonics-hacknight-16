@@ -1,4 +1,4 @@
-package examples.functionalVsImperative.data;
+package functionalVsImperative.data;
 
 public enum Gender {
     MALE, FEMALE, OTHER

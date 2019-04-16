@@ -1,4 +1,4 @@
-package examples.functionalVsImperative.data;
+package functionalVsImperative.data;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

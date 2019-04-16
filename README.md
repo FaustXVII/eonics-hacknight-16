@@ -17,6 +17,8 @@ I have written a small class in the `Imperative` style, at first it looks good; 
 With `higher-order functions` we can change this with ease, and make it look gorgeous
  in the process! Often this comes with additional benefits such as `lazy evaluation` and
  if you recognize a `Monoid` you can do it in parallel as well!
+ 
+ Go to: `src/functionalVsImperative/ImperativeToFunctional.java` and follow the instructions in the comments.
 
 **If you want to dive deeper in **FP** with Java.<br>Here an interesting article :**
 * [Java without if](http://ashtonkemerling.com/posts/java-without-if/)
