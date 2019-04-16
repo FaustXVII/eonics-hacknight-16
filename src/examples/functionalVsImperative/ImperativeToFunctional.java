@@ -11,8 +11,10 @@ public class ImperativeToFunctional {
    private final List<Person> persons = new RandomPersonGenerator().get(1000);
 
    public ImperativeToFunctional(){
+      System.out.println("Start!");
       imperative_EarnPerYear();
       imperative_EarnPerHour();
+      System.out.println("Done!");
 
       // Goal, implement the same logic in a functional way.
       // Without duplicate code.
@@ -30,6 +32,7 @@ public class ImperativeToFunctional {
       BigDecimal lastHighestSalary = BigDecimal.ZERO;
       List<String> bigEarnersNames = new ArrayList<>();
 
+      System.out.println("\nThe following people earn the most!");
       for(Person person : persons){
          int compare = person.getAnnualSalary().compareTo(lastHighestSalary);
 
@@ -51,6 +54,7 @@ public class ImperativeToFunctional {
       BigDecimal lastHighestHourlyWage = BigDecimal.ZERO;
       List<String> bigEarnersNames = new ArrayList<>();
 
+      System.out.println("\nThe following people have to highest hourly wage!");
       for(Person person : persons){
          int compare = person.getHourlyWage().compareTo(lastHighestHourlyWage);
 
