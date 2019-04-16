@@ -1,4 +1,4 @@
-package examples.snipits;
+package examples.snippets;
 
 // _                     _         _
 //| |                   | |       | |

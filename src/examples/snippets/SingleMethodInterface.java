@@ -1,4 +1,4 @@
-package examples.snipits;
+package examples.snippets;
 
 // _____ _             _         ___  _         _                  _    ___  ___     _   _               _
 ///  ___(_)           | |       / _ \| |       | |                | |   |  \/  |    | | | |             | |

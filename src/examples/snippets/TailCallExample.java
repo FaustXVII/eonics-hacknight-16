@@ -1,4 +1,4 @@
-package examples.snipits;
+package examples.snippets;
 
 import java.util.function.IntUnaryOperator;
 

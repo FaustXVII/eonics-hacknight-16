@@ -1,4 +1,4 @@
-package examples.snipits;
+package examples.snippets;
 
 import java.util.Arrays;
 import java.util.List;
