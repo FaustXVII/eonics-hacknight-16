@@ -94,7 +94,7 @@ public class TheFunctionalWay {
         .map(person -> person.getFirstName() + " " + person.getLastName())
         .collect(Collectors.toList());
 
-    public TheFunctionalWay(){
+    public void run(){
         List<Person> persons = new RandomPersonGenerator().next(10_000_000);
 
         System.out.println("Started!\n");
