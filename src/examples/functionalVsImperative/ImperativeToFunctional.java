@@ -21,6 +21,9 @@ public class ImperativeToFunctional {
 
       // Looking for inspiration? In the package `snippets`
       // Stuck? Take a look at `TheFunctionalWay.java`
+
+      // Done and looking for more?
+      // Try to get the most common first and last names by gender.
    }
 
    private void imperative_EarnPerYear(){

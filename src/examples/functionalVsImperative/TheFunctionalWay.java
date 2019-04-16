@@ -98,22 +98,36 @@ public class TheFunctionalWay {
         List<Person> persons = new RandomPersonGenerator().get(10_000_000);
 
         System.out.println("Started!\n");
+        // average annual salary
+        // average annual salary male
+        // average annual salary female
+        // average annual salary under 18
         System.out.println("Average Annual Salary = " + averageAnnualSalary.apply(persons));
         System.out.println("Average Annual Salary for man = " + averageAnnualSalaryMale.apply(persons));
         System.out.println("Average Annual Salary for woman = " + averageAnnualSalaryFemale.apply(persons));
         System.out.println("Average Annual Salary for kids = " + averageAnnualSalaryUnder_18.apply(persons));
 
+        // Number of male's
+        // Number of female's
+        // Number of other's
         System.out.println("Number of man = " + numberOfPeopleAfterFilter.apply(onlyMan).apply(persons));
         System.out.println("Number of woman = " + numberOfPeopleAfterFilter.apply(onlyWoman).apply(persons));
         System.out.println("Number of other-genders = " + numberOfPeopleAfterFilter.apply(onlyOther).apply(persons));
 
+        // Percentage of unemployed people
         System.out.println(percentageOfUnemployed.apply(persons) + "% of the people are unemployed.\n");
 
+        // most common male first name
+        // most common female first name
+        // most common male last name
+        // most common female last name
         System.out.println(maleFirstName_thatIsMostCommon.apply(persons) + " - is the most common first-name for man.");
         System.out.println(femaleFirstName_thatIsMostCommon.apply(persons) + " - is the most common first-name for woman.");
         System.out.println(maleLastName_thatIsMostCommon.apply(persons) + " - is the most common last-name for man.");
         System.out.println(femaleLastName_thatIsMostCommon.apply(persons) + " - is the most common last-name for woman.");
 
+        // list of people by name that earn the most
+        // list of people that earn the most per hour.
         BigDecimal largestAnnualSalary = this.largestAnnualSalary.apply(persons);
         System.out.println("\nThe following people have the highest annual salary [" + largestAnnualSalary + "]");
         List<String> namesOfThePeopleThatEarnTheMost = fullNameAfterfilter.apply(filterAnnalSalary.apply(largestAnnualSalary)).apply(persons);
@@ -128,23 +142,4 @@ public class TheFunctionalWay {
 
         System.out.println("\nDone!");
     }
-
-    // average annual salary
-    // average annual salary male
-    // average annual salary female
-    // average annual salary under 18
-
-    // Number of male's
-    // Number of female's
-    // Number of other's
-
-    // Percentage of unemployed people
-
-    // most common male first name
-    // most common female first name
-    // most common male last name
-    // most common female last name
-
-    // list of people by name that earn the most
-    // list of people that earn the most per hour.
 }
