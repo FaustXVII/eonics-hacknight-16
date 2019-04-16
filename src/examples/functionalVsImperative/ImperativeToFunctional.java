@@ -21,7 +21,7 @@ public class ImperativeToFunctional {
       // Easy maintainable.
       // Simple to extend.
 
-      // Looking for inspiration? In the package `snippets`
+      // Looking for inspiration? In the package `snippets` you can find some
       // Stuck? Take a look at `TheFunctionalWay.java`
 
       // Done and looking for more?
