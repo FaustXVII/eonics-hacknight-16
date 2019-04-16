@@ -14,18 +14,18 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class TheFunctionalWay {
-    Function<Predicate, Function<List<Person>, Long>> numberOfPeopleAfterFilter =
+    private Function<Predicate<Person>, Function<List<Person>, Long>> numberOfPeopleAfterFilter =
         predicate -> persons -> persons.stream()
             .parallel()
             .filter(predicate)
             .count();
 
-    Function<Predicate<Person>,Function<List<Person>, BigDecimal> > averageAnnualSalary_WithFilter =
+    private Function<Predicate<Person>,Function<List<Person>, BigDecimal> > averageAnnualSalary_WithFilter =
         predicate -> persons ->
         persons.stream()
             .parallel()
             .filter(predicate)
-            .map(person -> person.getAnnualSalary())
+            .map(Person::getAnnualSalary)
             .reduce(BigDecimal.ZERO, BigDecimal::add)
             .divide(BigDecimal.valueOf(
                 numberOfPeopleAfterFilter
@@ -33,62 +33,62 @@ public class TheFunctionalWay {
                     .apply(persons))
                 , 2, RoundingMode.HALF_UP);
 
-    Predicate<Person> noFilter = person -> true;
-    Predicate<Person> onlyMan = person -> person.getGender().equals(Gender.MALE);
-    Predicate<Person> onlyWoman = person -> person.getGender().equals(Gender.FEMALE);
-    Predicate<Person> onlyOther = person -> person.getGender().equals(Gender.OTHER);
-    Predicate<Person> onlyKids = person -> person.getAge() < 18;
-    Predicate<Person> unemployed = Person::isUnemployed;
+    private Predicate<Person> noFilter = person -> true;
+    private Predicate<Person> onlyMan = person -> person.getGender().equals(Gender.MALE);
+    private Predicate<Person> onlyWoman = person -> person.getGender().equals(Gender.FEMALE);
+    private Predicate<Person> onlyOther = person -> person.getGender().equals(Gender.OTHER);
+    private Predicate<Person> onlyKids = person -> person.getAge() < 18;
+    private Predicate<Person> unemployed = Person::isUnemployed;
 
-    Function<List<Person>, BigDecimal> averageAnnualSalary = averageAnnualSalary_WithFilter.apply(noFilter);
-    Function<List<Person>, BigDecimal> averageAnnualSalaryMale = averageAnnualSalary_WithFilter.apply(onlyMan);
-    Function<List<Person>, BigDecimal> averageAnnualSalaryFemale = averageAnnualSalary_WithFilter.apply(onlyWoman);
-    Function<List<Person>, BigDecimal> averageAnnualSalaryUnder_18 = averageAnnualSalary_WithFilter.apply(onlyKids);
+    private Function<List<Person>, BigDecimal> averageAnnualSalary = averageAnnualSalary_WithFilter.apply(noFilter);
+    private Function<List<Person>, BigDecimal> averageAnnualSalaryMale = averageAnnualSalary_WithFilter.apply(onlyMan);
+    private Function<List<Person>, BigDecimal> averageAnnualSalaryFemale = averageAnnualSalary_WithFilter.apply(onlyWoman);
+    private Function<List<Person>, BigDecimal> averageAnnualSalaryUnder_18 = averageAnnualSalary_WithFilter.apply(onlyKids);
 
-    Function<BigDecimal, Function<BigDecimal, BigDecimal>> percentageOf =
+    private Function<BigDecimal, Function<BigDecimal, BigDecimal>> percentageOf =
         value -> total -> value.divide(total).multiply(BigDecimal.valueOf(100)).setScale(2, RoundingMode.HALF_UP);
 
-    Function<List<Person>, BigDecimal> percentageOfUnemployed = persons -> percentageOf
+    private Function<List<Person>, BigDecimal> percentageOfUnemployed = persons -> percentageOf
         .apply(BigDecimal.valueOf(
             numberOfPeopleAfterFilter
                 .apply(unemployed)
                 .apply(persons)))
         .apply(BigDecimal.valueOf(persons.size()));
 
-    Function<Predicate<Person>, Function<Function<Person, String>, Function<List<Person>, String>>> name_thatIsMostCommon =
+    private Function<Predicate<Person>, Function<Function<Person, String>, Function<List<Person>, String>>> name_thatIsMostCommon =
         predicate -> getName -> persons -> persons.stream()
             .filter(predicate)
             .collect(Collectors.groupingBy(getName, Collectors.counting()))
             .entrySet()
             .stream()
             .max(Comparator.comparing(Map.Entry::getValue))
-            .map(entry -> entry.getKey())
+            .map(Map.Entry::getKey)
             .get();
 
-    Function<Person, String> firstName = person -> person.getFirstName();
-    Function<Person, String> lastName = person -> person.getLastName();
-    Function<List<Person>, String> maleFirstName_thatIsMostCommon = name_thatIsMostCommon.apply(onlyMan).apply(firstName);
-    Function<List<Person>, String> maleLastName_thatIsMostCommon = name_thatIsMostCommon.apply(onlyMan).apply(lastName);
-    Function<List<Person>, String> femaleFirstName_thatIsMostCommon = name_thatIsMostCommon.apply(onlyWoman).apply(firstName );
-    Function<List<Person>, String> femaleLastName_thatIsMostCommon = name_thatIsMostCommon.apply(onlyWoman).apply(lastName);
+    private Function<Person, String> firstName = Person::getFirstName;
+    private Function<Person, String> lastName = Person::getLastName;
+    private Function<List<Person>, String> maleFirstName_thatIsMostCommon = name_thatIsMostCommon.apply(onlyMan).apply(firstName);
+    private Function<List<Person>, String> maleLastName_thatIsMostCommon = name_thatIsMostCommon.apply(onlyMan).apply(lastName);
+    private Function<List<Person>, String> femaleFirstName_thatIsMostCommon = name_thatIsMostCommon.apply(onlyWoman).apply(firstName );
+    private Function<List<Person>, String> femaleLastName_thatIsMostCommon = name_thatIsMostCommon.apply(onlyWoman).apply(lastName);
 
-    Function<List<Person>, BigDecimal> largestAnnualSalary = persons -> persons.stream()
+    private Function<List<Person>, BigDecimal> largestAnnualSalary = persons -> persons.stream()
         .max(Comparator.comparing(Person::getAnnualSalary))
-        .map(person -> person.getAnnualSalary())
+        .map(Person::getAnnualSalary)
         .get();
 
-    Function<List<Person>, BigDecimal> largestHourlySalary = persons -> persons.stream()
+    private Function<List<Person>, BigDecimal> largestHourlySalary = persons -> persons.stream()
         .max(Comparator.comparing(Person::getHourlyWage))
-        .map(person -> person.getHourlyWage())
+        .map(Person::getHourlyWage)
         .get();
 
-    Function<BigDecimal, Predicate<Person>> filterAnnalSalary =
+    private Function<BigDecimal, Predicate<Person>> filterAnnalSalary =
         salary -> person -> person.getAnnualSalary().equals(salary);
 
-    Function<BigDecimal, Predicate<Person>> filterHourlyWage =
+    private Function<BigDecimal, Predicate<Person>> filterHourlyWage =
         hourlyWage -> person -> person.getHourlyWage().equals(hourlyWage);
 
-    Function<Predicate<Person>, Function<List<Person>, List<String>>> fullNameAfterFilter =
+    private Function<Predicate<Person>, Function<List<Person>, List<String>>> fullNameAfterFilter =
         predicate -> persons -> persons.stream()
         .filter(predicate)
         .map(person -> person.getFirstName() + " " + person.getLastName())
