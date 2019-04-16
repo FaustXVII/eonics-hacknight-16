@@ -95,7 +95,7 @@ public class TheFunctionalWay {
         .collect(Collectors.toList());
 
     public TheFunctionalWay(){
-        List<Person> persons = new RandomPersonGenerator().get(10_000_000);
+        List<Person> persons = new RandomPersonGenerator().next(10_000_000);
 
         System.out.println("Started!\n");
         // average annual salary

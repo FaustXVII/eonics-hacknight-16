@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ImperativeToFunctional {
-   private final List<Person> persons = new RandomPersonGenerator().get(1000);
+   private final List<Person> persons = new RandomPersonGenerator().next(1000);
 
    public ImperativeToFunctional(){
       System.out.println("Start!");
@@ -25,7 +25,7 @@ public class ImperativeToFunctional {
       // Stuck? Take a look at `TheFunctionalWay.java`
 
       // Done and looking for more?
-      // Try to get the most common first and last names by gender.
+      // Try to next the most common first and last names by gender.
    }
 
    private void imperative_EarnPerYear(){

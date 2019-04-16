@@ -10,11 +10,11 @@ import java.util.stream.Stream;
 public class RandomPersonGenerator {
     private Random random = new Random();
 
-    public List<Person> get(int n){
-        return Stream.generate(this::get).limit(n).collect(Collectors.toList());
+    public List<Person> next(int n){
+        return Stream.generate(this::next).limit(n).collect(Collectors.toList());
     }
 
-    public Person get(){
+    public Person next(){
         Person person = new Person();
 
         final Gender gender = randomGender();
