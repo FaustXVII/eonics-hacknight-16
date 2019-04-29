@@ -9,8 +9,16 @@ import java.util.function.Supplier;
 //| |   | |/ _ \/ __| | | | '__/ _ \
 //| \__/\ | (_) \__ \ |_| | | |  __/
 // \____/_|\___/|___/\__,_|_|  \___|
-public class Closure {
+public class ClosureExample {
     public void run(){
+        counters();
+        betterClosure();
+
+    }
+
+    private void counters(){
+        // Even though this is a closure, don't use this.
+        // The functions are impure, and violating the ideas of FP !!!
         Supplier<Integer> counter = makeCounter.get();
         Supplier<Integer> counter_2 = makeCounter.get();
 
@@ -26,7 +34,7 @@ public class Closure {
         System.out.println("Counter_2 = " + counter_2.get());// prints: Counter_2 = 3
     }
 
-    // Local_variable needs to be "implicit final", or we abuse the mutability of java =D
+    // Local_variable needs to be "implicit final"! ..Or we abuse the mutability of java =D
     Supplier<Supplier<Integer>> makeCounter = () -> {
         int[] local_variable = {0};
         return ()-> local_variable[0] += 1;
@@ -38,4 +46,12 @@ public class Closure {
         AtomicInteger local_variable = new AtomicInteger(0);
         return ()-> local_variable.incrementAndGet();
     };
+
+    private void betterClosure(){
+        int number = 5;
+
+        Supplier<Integer> add6ToTheNumber = () -> number + 6;
+
+        System.out.println("Better closure " + add6ToTheNumber.get());
+    }
 }
