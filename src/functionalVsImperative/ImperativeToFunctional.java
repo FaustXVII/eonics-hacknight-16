@@ -10,7 +10,7 @@ import java.util.List;
 public class ImperativeToFunctional {
    private final List<Person> persons = new RandomPersonGenerator().next(1000);
 
-   public ImperativeToFunctional(){
+   public void run(){
       System.out.println("Start!");
       imperative_EarnPerYear();
       imperative_EarnPerHour();

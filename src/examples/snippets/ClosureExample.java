@@ -16,12 +16,16 @@ public class ClosureExample {
 
     }
 
+    // The functions are impure, and violating the ideas of FP !!!
+    // But I included those to show that it keeps some kind of internal state.
+    // Which defines a Closure.
     private void counters(){
-        // Even though this is a closure, don't use this.
-        // The functions are impure, and violating the ideas of FP !!!
-        Supplier<Integer> counter = makeCounter.get();
-        Supplier<Integer> counter_2 = makeCounter.get();
+        Supplier<Supplier<Integer>> makeCounter = () -> {
+            int[] local_variable = {0};
+            return ()-> local_variable[0] += 1;
+        };
 
+        Supplier<Integer> counter = makeCounter.get();
         System.out.println("Counter = " + counter.get());// prints: Counter = 1
         System.out.println("Counter = " + counter.get());// prints: Counter = 2
         System.out.println("Counter = " + counter.get());// prints: Counter = 3
@@ -29,29 +33,25 @@ public class ClosureExample {
         System.out.println("Counter = " + counter.get());// prints: Counter = 5
 
 
+        // Looks less hacky, but keep in mind; even though you can make this, that doesn't mean you should!
+        Supplier<Supplier<Integer>> makeCounter2 = () -> {
+            AtomicInteger local_variable = new AtomicInteger(0);
+            return ()-> local_variable.incrementAndGet();
+        };
+
+        Supplier<Integer> counter_2 = makeCounter2.get();
         System.out.println("Counter_2 = " + counter_2.get());// prints: Counter_2 = 1
         System.out.println("Counter_2 = " + counter_2.get());// prints: Counter_2 = 2
         System.out.println("Counter_2 = " + counter_2.get());// prints: Counter_2 = 3
     }
 
-    // Local_variable needs to be "implicit final"! ..Or we abuse the mutability of java =D
-    Supplier<Supplier<Integer>> makeCounter = () -> {
-        int[] local_variable = {0};
-        return ()-> local_variable[0] += 1;
-    };
-
-    // I admit, the int Array is hacky
-    // So here is a cleaner solution!
-    Supplier<Supplier<Integer>> makeCounter2 = () -> {
-        AtomicInteger local_variable = new AtomicInteger(0);
-        return ()-> local_variable.incrementAndGet();
-    };
 
     private void betterClosure(){
         int number = 5;
 
         Supplier<Integer> add6ToTheNumber = () -> number + 6;
 
+        // You can't change 'number' here, Java treads it as "effectively final".
         System.out.println("Better closure " + add6ToTheNumber.get());
     }
 }
