@@ -37,5 +37,5 @@ public class TailCallExample {
     }
 
     // Same as factorialTailCall but even less boilerplate code
-    private final IntUnaryOperator factorial = number -> (number == 0)? 1 : number * factorial(number -1);
+    private final IntUnaryOperator factorial = number -> (number == 0)? 1 : number * this.factorial.applyAsInt(number -1);
 }
