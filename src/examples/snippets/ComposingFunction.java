@@ -2,6 +2,8 @@ package examples.snippets;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.IntUnaryOperator;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 
@@ -20,15 +22,17 @@ public class ComposingFunction {
     }
 
     private void exampleOneAndTwo(){
-        final UnaryOperator<Integer> timesTwo = e -> e * 2;
-        final UnaryOperator<Integer> square = e -> e * e;
+        final IntUnaryOperator timesTwo = e -> e * 2;
+        final IntUnaryOperator square = e -> e * e;
 
-        // The output of one becomes the input of the other.
-        final int one = timesTwo.andThen(square).apply(3); //(3 * 2 = 6) (6 * 6 =) 36
-        final int two = timesTwo.compose(square).apply(3); //(3 * 3 = 9) (9 * 2 =) 18
+        // The 2 functions become one new function
+        // [one] executes timesTwo first, followed by square.
+        // [two] executes square first, followed by timesTwo.
+        final IntUnaryOperator one = timesTwo.andThen(square);
+        final IntUnaryOperator two = timesTwo.compose(square);
 
-        System.out.println("Question one = " + one);
-        System.out.println("Question two = " + two);
+        System.out.println("Question one = " + one.applyAsInt(3)); //(3 * 2 = 6) (6 * 6 =) 36
+        System.out.println("Question two = " + two.applyAsInt(3)); //(3 * 3 = 9) (9 * 2 =) 18
     }
 
     private void exampleThree(){
@@ -38,7 +42,7 @@ public class ComposingFunction {
         final UnaryOperator<List<Integer>> firstThree = e -> e.subList(0, 3);
 
         // All together make a new function.
-        final UnaryOperator<List<Integer>> threeLowestUniqueNumbers = e -> uniqueNumbers.andThen(order.andThen(firstThree)).apply(e);
+        final Function<List<Integer>, List<Integer>> threeLowestUniqueNumbers = uniqueNumbers.andThen(order.andThen(firstThree));
 
         final List<Integer> numbers = Arrays.asList(6,3,8,4,7,2,8,2,2,1,7,9);
         System.out.println("Question three = " + threeLowestUniqueNumbers.apply(numbers));

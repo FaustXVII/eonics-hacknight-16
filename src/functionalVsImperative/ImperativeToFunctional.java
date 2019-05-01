@@ -11,11 +11,6 @@ public class ImperativeToFunctional {
    private final List<Person> persons = new RandomPersonGenerator().next(1000);
 
    public void run(){
-      System.out.println("Start!");
-      imperative_EarnPerYear();
-      imperative_EarnPerHour();
-      System.out.println("Done!");
-
       // Goal, implement the same logic in a functional way.
       // Without duplicate code.
       // Easy maintainable.
@@ -26,6 +21,11 @@ public class ImperativeToFunctional {
 
       // Done and looking for more?
       // Try to get the most common first and last names by gender.
+
+      System.out.println("Start!");
+      imperative_EarnPerYear();
+      imperative_EarnPerHour();
+      System.out.println("Done!");
    }
 
    private void imperative_EarnPerYear(){
