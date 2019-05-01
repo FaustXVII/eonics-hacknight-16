@@ -18,6 +18,7 @@ public class CurryingExample {
         exampleTwo();
     }
 
+    // Curried functions are Closures, the inner function keeps track of the outer function's parameter.
     private void exampleOne(){
         final Function<Integer, Function<Integer, Integer>> curryAdd = x -> y -> x + y;
         final int answer = curryAdd.apply(7).apply(10);
