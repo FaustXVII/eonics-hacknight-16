@@ -14,34 +14,49 @@ public class StreamExample {
     List<String> names = Arrays.asList("Bob", "Jane", "Mary", "", null);
 
     public void run(){
+        exampleOne();
+        exampleTwo();
+        exampleThree();
+        exampleFour();
+        examplefive();
+    }
+
+    private void exampleOne(){
         // 1 Good old for loop
         for (int i = 0; i < names.size(); i++){
             final String name = names.get(i);
 
             System.out.println(name);
         }
+    }
 
+    private void exampleTwo(){
         // 2 The better enhanced for loop
         for (String name : names){
             System.out.println(name);
         }
+    }
 
+    private void exampleThree(){
         // 3 Foreach stream
         names.forEach(name -> System.out.println(name));
 
+        // open a stream on a collection
+        // Map (Make changes to items)*
+        // Filter (Make the collection smaller)*
+        // Terminal(Make a collection form the results)
+    }
+
+    private void exampleFour(){
         // 4 Stream with a foreach
         names.stream().forEach(name -> System.out.println(name));
+    }
 
+    private void examplefive(){
         // Q: When do you want a stream separated form the 'terminal operation' (foreach part)
         Stream streamOfNames = names.stream();
 
         // A: So you can use it later / some where else.
         streamOfNames.forEach(name -> System.out.println(name));
-
-
-        // open a stream on a collection
-        // Map (Make changes to items)
-        // Filter (Make the collection smaller)
-        // Terminal(Make a collection form the results)
     }
 }
