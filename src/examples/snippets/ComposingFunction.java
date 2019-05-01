@@ -17,8 +17,21 @@ import java.util.stream.Collectors;
 //                    |_|
 public class ComposingFunction {
     public void run() {
+        exampleZero();
         exampleOneAndTwo();
         exampleThree();
+    }
+
+    private void exampleZero(){
+        // a.andThan(b) == b.compose(a)
+        // Why are there 2 different ways to do the same thing?
+        // The andThan is more readable for most developers, and compose is more like Lisp languages
+        // and also this:
+        Function<Integer, String> hex = e -> Integer.toHexString(e);
+        Function<Integer, String> upperHex = hex.andThen(String::toUpperCase);
+        Function<Integer, String> castBeforeUse = ((Function<String, String>)String::toUpperCase).compose(hex);
+        // You can avoid some nasty casting boilerplate code by picking them in the right order.
+        System.out.println(upperHex.apply(60) + " == "+ castBeforeUse.apply(60));
     }
 
     private void exampleOneAndTwo(){
