@@ -82,7 +82,7 @@ public class TheFunctionalWay {
         .map(Person::getHourlyWage)
         .get();
 
-    private Function<BigDecimal, Predicate<Person>> filterAnnalSalary =
+    private Function<BigDecimal, Predicate<Person>> filterAnnualSalary =
         salary -> person -> person.getAnnualSalary().equals(salary);
 
     private Function<BigDecimal, Predicate<Person>> filterHourlyWage =
@@ -130,7 +130,7 @@ public class TheFunctionalWay {
         // list of people that earn the most per hour.
         BigDecimal largestAnnualSalary = this.largestAnnualSalary.apply(persons);
         System.out.println("\nThe following people have the highest annual salary [" + largestAnnualSalary + "]");
-        List<String> namesOfThePeopleThatEarnTheMost = fullNameAfterFilter.apply(filterAnnalSalary.apply(largestAnnualSalary)).apply(persons);
+        List<String> namesOfThePeopleThatEarnTheMost = fullNameAfterFilter.apply(filterAnnualSalary.apply(largestAnnualSalary)).apply(persons);
         namesOfThePeopleThatEarnTheMost.subList(0, 10).forEach(System.out::println);
         System.out.println("And " + (namesOfThePeopleThatEarnTheMost.size() -10) + " More...");
 
