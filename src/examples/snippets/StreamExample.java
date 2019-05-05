@@ -18,7 +18,7 @@ public class StreamExample {
         exampleTwo();
         exampleThree();
         exampleFour();
-        examplefive();
+        exampleFive();
     }
 
     private void exampleOne(){
@@ -52,7 +52,7 @@ public class StreamExample {
         names.stream().forEach(name -> System.out.println(name));
     }
 
-    private void examplefive(){
+    private void exampleFive(){
         // You can also build a stream, much like a partially applied function.
         Stream streamOfNames = names.stream();
 
