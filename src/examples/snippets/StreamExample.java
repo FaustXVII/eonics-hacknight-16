@@ -53,10 +53,10 @@ public class StreamExample {
     }
 
     private void examplefive(){
-        // Q: When do you want a stream separated form the 'terminal operation' (foreach part)
+        // You can also build a stream, much like a partially applied function.
         Stream streamOfNames = names.stream();
 
-        // A: So you can use it later / some where else.
+        // This way you can execute it later/ elsewhere
         streamOfNames.forEach(name -> System.out.println(name));
     }
 }
