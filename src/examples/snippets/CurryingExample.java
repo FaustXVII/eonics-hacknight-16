@@ -26,6 +26,7 @@ public class CurryingExample {
         System.out.println("Currying, answer one = " + answer);
     }
 
+    // Here the same idea but with a shorter notation thanks to an other function interface.
     private void exampleTwo(){
         final IntFunction<IntUnaryOperator> curryAdd = x -> y -> x + y;
         final int answer = curryAdd.apply(10).applyAsInt(7);
