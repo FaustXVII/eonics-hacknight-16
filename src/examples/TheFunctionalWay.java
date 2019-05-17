@@ -107,9 +107,9 @@ public class TheFunctionalWay {
         System.out.println("Average Annual Salary for woman = " + averageAnnualSalaryFemale.apply(persons));
         System.out.println("Average Annual Salary for kids = " + averageAnnualSalaryUnder_18.apply(persons));
 
-        // Number of male's
-        // Number of female's
-        // Number of other's
+        // Number of males
+        // Number of females
+        // Number of others
         System.out.println("Number of man = " + numberOfPeopleAfterFilter.apply(onlyMan).apply(persons));
         System.out.println("Number of woman = " + numberOfPeopleAfterFilter.apply(onlyWoman).apply(persons));
         System.out.println("Number of other-genders = " + numberOfPeopleAfterFilter.apply(onlyOther).apply(persons));

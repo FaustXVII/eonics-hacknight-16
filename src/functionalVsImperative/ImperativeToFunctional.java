@@ -54,7 +54,7 @@ public class ImperativeToFunctional {
       BigDecimal lastHighestHourlyWage = BigDecimal.ZERO;
       List<String> bigEarnersNames = new ArrayList<>();
 
-      System.out.println("\nThe following people have to highest hourly wage!");
+      System.out.println("\nThe following people have the highest hourly wage!");
       for(Person person : persons){
          int compare = person.getHourlyWage().compareTo(lastHighestHourlyWage);
 

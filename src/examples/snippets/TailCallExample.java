@@ -33,9 +33,9 @@ public class TailCallExample {
 
     // Has no state
     private int factorialTailCall(final int number){
-        return (number == 0)? 1 : number * factorialTailCall(number -1);
+        return (number == 1)? 1 : number * factorialTailCall(number -1);
     }
 
     // Same as factorialTailCall but even less boilerplate code
-    private final IntUnaryOperator factorial = number -> (number == 0)? 1 : number * this.factorial.applyAsInt(number -1);
+    private final IntUnaryOperator factorial = number -> (number == 1)? 1 : number * this.factorial.applyAsInt(number -1);
 }
