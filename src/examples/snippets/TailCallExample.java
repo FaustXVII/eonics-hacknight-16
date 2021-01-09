@@ -1,6 +1,7 @@
 package examples.snippets;
 
-import java.util.function.IntUnaryOperator;
+import javafx.util.Pair;
+import java.util.function.*;
 
 // _____     _ _             _ _
 //|_   _|   (_) |           | | |
@@ -14,6 +15,7 @@ public class TailCallExample {
         System.out.println("Tailcall, loop 'State full': " + factorial(5));
         System.out.println("Tailcall, Method 'Stateless': " + factorialTailCall(5));
         System.out.println("Tailcall, Function 'Stateless': " + factorial.applyAsInt(5));
+        System.out.println("Tailcall, trampoline: " + trampoline(5l));
     }
 
     // Has state, the: i
@@ -38,4 +40,25 @@ public class TailCallExample {
 
     // Same as factorialTailCall but even less boilerplate code
     private final IntUnaryOperator factorial = number -> (number == 1)? 1 : number * this.factorial.applyAsInt(number -1);
+
+
+
+    // Same pattern as a TailCalled function, but no risk of a StackOverflowError
+    private Long trampoline(final Long number){
+        Pair<Long, Long> result = new Pair<>(number, number);
+
+        while (result.getKey() > 1){
+            result = bounce(result);
+        }
+
+        return result.getValue();
+    }
+
+    private Pair<Long, Long> bounce(final Pair<Long, Long> either){
+        final Long iterator = either.getKey() -1;
+        final Long result = either.getValue() * iterator;
+
+        return new Pair<>(iterator, result);
+    }
+
 }
