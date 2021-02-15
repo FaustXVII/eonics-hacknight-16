@@ -44,21 +44,20 @@ public class TailCallExample {
 
 
     // Same pattern as a TailCalled function, but no risk of a StackOverflowError
-    private Long trampoline(final Long number){
-        Pair<Long, Long> result = new Pair<>(number, number);
+    private long trampoline(long number){
+        Pair<Supplier, Long> supplierOrResult = new Pair<>(()-> factorial(number, 1), null);
 
-        while (result.getKey() > 1){
-            result = bounce(result);
+        while (supplierOrResult.getValue() == null){
+            supplierOrResult = (Pair<Supplier, Long>)supplierOrResult.getKey().get();
         }
 
-        return result.getValue();
+        return supplierOrResult.getValue();
     }
 
-    private Pair<Long, Long> bounce(final Pair<Long, Long> either){
-        final Long iterator = either.getKey() -1;
-        final Long result = either.getValue() * iterator;
-
-        return new Pair<>(iterator, result);
+    private Pair<Supplier, Long> factorial(long number, long sum){
+        return (number != 1)
+            ? new Pair<>(() -> factorial(number -1, sum * number), null)
+            : new Pair<>(null, sum);
     }
 
 }
