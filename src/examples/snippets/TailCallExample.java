@@ -55,9 +55,9 @@ public class TailCallExample {
     }
 
     private Pair<Supplier, Long> factorial(long number, long sum){
-        return (number != 1)
-            ? new Pair<>(() -> factorial(number -1, sum * number), null)
-            : new Pair<>(null, sum);
+        return (number == 1)
+            ? new Pair<>(null, sum)
+            : new Pair<>(() -> factorial(number -1, sum * number), null);
     }
 
 }
